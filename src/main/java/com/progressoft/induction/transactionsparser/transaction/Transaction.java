@@ -1,18 +1,25 @@
-package com.progressoft.induction.transactionsparser;
+package com.progressoft.induction.transactionsparser.transaction;
 
-import java.math.BigDecimal;
-import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
-public class Transaction {
+import java.math.BigDecimal;
+import java.util.Objects;
 
+@XmlRootElement(name = "Transaction")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Transaction {
+    @XmlElement(name = "Description")
     private String description;
+    @XmlElement(name = "Direction")
     private String direction;
+    @XmlElement(name = "Value")
     private BigDecimal amount;
+    @XmlElement(name = "Currency")
     private String currency;
-    
-    @XmlElement
+
+
     public String getDescription() {
         return description;
     }
@@ -20,7 +27,8 @@ public class Transaction {
     public void setDescription(String description) {
         this.description = description;
     }
-    @XmlElement
+
+
     public String getDirection() {
         return direction;
     }
@@ -28,7 +36,8 @@ public class Transaction {
     public void setDirection(String direction) {
         this.direction = direction;
     }
-    @XmlElement
+
+
     public BigDecimal getAmount() {
         return amount;
     }
@@ -36,7 +45,8 @@ public class Transaction {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
-    @XmlElement
+
+
     public String getCurrency() {
         return currency;
     }
@@ -47,12 +57,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "description='" + description + '\'' +
-                ", direction='" + direction + '\'' +
-                ", amount=" + amount +
-                ", currency='" + currency + '\'' +
-                '}';
+        return "Transaction{" + "description='" + description + '\'' + ", direction='" + direction + '\'' + ", amount=" + amount + ", currency='" + currency + '\'' + '}';
     }
 
     @Override
@@ -60,10 +65,7 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(description, that.description) &&
-                Objects.equals(direction, that.direction) &&
-                Objects.equals(amount, that.amount) &&
-                Objects.equals(currency, that.currency);
+        return Objects.equals(description, that.description) && Objects.equals(direction, that.direction) && Objects.equals(amount, that.amount) && Objects.equals(currency, that.currency);
     }
 
     @Override

@@ -1,0 +1,25 @@
+package com.progressoft.induction.transactionsparser.helper;
+
+import com.progressoft.induction.transactionsparser.transaction.Transaction;
+
+import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public final class TestHelper {
+    public static void assertTransaction(Transaction expectedTransaction, Transaction actualTransaction) {
+        assertEquals(expectedTransaction.getDescription(), actualTransaction.getDescription());
+        assertEquals(expectedTransaction.getDirection(), actualTransaction.getDirection());
+        assertEquals(expectedTransaction.getAmount(), actualTransaction.getAmount());
+        assertEquals(expectedTransaction.getCurrency(), actualTransaction.getCurrency());
+    }
+
+    public static Transaction createExpectedTransaction(String description, String direction, BigDecimal amount, String currency) {
+        Transaction transaction = new Transaction();
+        transaction.setDescription(description);
+        transaction.setDirection(direction);
+        transaction.setAmount(amount);
+        transaction.setCurrency(currency);
+        return transaction;
+    }
+}
